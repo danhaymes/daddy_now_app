@@ -23,4 +23,18 @@ class Api::UsersController < ApplicationController
     render 'show.json.jbuilder'
   end
 
+  def update
+    @user = User.find(4)
+
+    @user.first_name = params[:first_name] || @user.first_name
+    @user.last_name = params[:last_name] || @user.last_name
+    @user.email = params[:email] || @user.email
+    @user.user_name = params[:user_name] || @user.user_name
+    @user.zipcode = params[:zipcode] || @user.zipcode
+    @user.profile_pic = params[:profile_pic] || @user.profile_pic
+    
+    @user.save
+    render 'show.json.jbuilder'
+  end
+
 end
