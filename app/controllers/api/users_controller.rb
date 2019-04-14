@@ -37,4 +37,10 @@ class Api::UsersController < ApplicationController
     render 'show.json.jbuilder'
   end
 
+  def destroy
+    @user = User.find_by(id: params[:id])
+    @user.destroy
+    redirect_to "/users"
+  end
+
 end

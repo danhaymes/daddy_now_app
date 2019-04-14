@@ -16,13 +16,17 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
+#signet for OAuth 2.0 for google-api-client gem
+gem 'signet', '~> 0.11.0'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+#google-api-client gem for calendar sync
+gem 'google-api-client', require: 'google/apis/calendar_v3'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
