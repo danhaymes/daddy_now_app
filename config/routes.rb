@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # EXAMPLE HTML ROUTE
-  # get "/photos" => "photos#index"
+   get "/posts" => "posts#index"
+    get "/posts" => "posts#new"
 
   #google calendar authorization testing routes 
   # get '/redirect', to: 'example#redirect', as: 'redirect'
@@ -13,5 +14,7 @@ Rails.application.routes.draw do
     get "/users/:id" => "users#show"
     patch "/users/:id" => "users#update"
     delete "/users/:id" => "users#destroy"
+
+    get "/posts" => "posts#index"
   end
 end

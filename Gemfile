@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 #google-api-client gem for calendar sync
 gem 'google-api-client', require: 'google/apis/calendar_v3'
 # Use ActiveStorage variant
