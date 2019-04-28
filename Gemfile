@@ -18,7 +18,7 @@ gem 'uglifier', '>= 1.3.0'
 
 #signet for OAuth 2.0 for google-api-client gem
 gem 'signet', '~> 0.11.0'
-
+gem 'activemodel', '~> 5.2', '>= 5.2.3'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -29,14 +29,13 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'google-api-client', require: 'google/apis/calendar_v3'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
-gem 'bulma-rails', '~> 0.6.2'
-gem 'simple_form', '~> 3.5'
+gem 'bulma', '~> 0.1.0'
+gem 'simple_form', '~> 4.1'
 gem 'devise', '~> 4.4', '>= 4.4.1'
-gem 'gravatar_image_tag', '~> 1.2'
-gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'rolify', '~> 5.2'
-gem 'cancancan', '~> 2.1', '>= 2.1.3'
-gem 'friendly_id', '~> 5.2', '>= 5.2.3'
+gem 'cancancan', '~> 3.0', '>= 3.0.1'
+gem 'friendly_id', '~> 5.2', '>= 5.2.5'
 gem 'redcarpet', '~> 3.4'
 gem 'coderay', '~> 1.1', '>= 1.1.2'
 
