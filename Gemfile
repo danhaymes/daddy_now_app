@@ -38,10 +38,11 @@ gem 'cancancan', '~> 3.0', '>= 3.0.1'
 gem 'friendly_id', '~> 5.2', '>= 5.2.5'
 gem 'redcarpet', '~> 3.4'
 gem 'coderay', '~> 1.1', '>= 1.1.2'
-
+gem 'redis', '~> 4.1'
+gem 'jwt_sessions', '~> 2.3', '>= 2.3.1'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'selenium-webdriver'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

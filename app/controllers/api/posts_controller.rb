@@ -1,13 +1,13 @@
 class Api::PostsController < ApplicationController
 
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :find_channels, only: [:index, :show, :new, :edit]
-  before_action :authenticate_user!, except: [:index, :show]
+  # before_action :authenticate_user!, except: [:index, :show]
 
   # GET /posts
   # GET /posts.json
   def index
     @posts = Post.all.order('created_at desc')
+    render 'index.json.jbuilder'
   end
 
   # GET /posts/1
@@ -28,17 +28,26 @@ class Api::PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = current_user.posts.build(post_params)
-
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: 'post was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
+      if post.persisted? 
+        render json: {messages: 'Post created', success: true},
+        status: :created
       else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+        render json:{messages: post.errors.full_messages, success: false}, status: :bad_request
       end
-    end
+      
+
+    # @post = Post.new(post_params)
+    # # current_user.posts.build(post_params)
+
+    # respond_to do |format|
+    #   if @post.save
+    #     format.html { redirect_to @post, notice: 'post was successfully created.' }
+    #     format.json { render :show, status: :created, location: @post }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @post.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /posts/1
@@ -69,15 +78,18 @@ class Api::PostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
+
     end
 
-    def find_channels
-      @channels = Channel.all.order('created_at desc')
+    def post
+      Post.create(post_params)
     end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :content, :channel_id)
+      params.permit(
+        :user_id, 
+        :post )
+      # .merge(user_id: current_user.id)
     end
 
 end

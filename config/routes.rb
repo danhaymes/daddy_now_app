@@ -2,13 +2,6 @@ Rails.application.routes.draw do
   # devise_for :users
   get 'home/index'
   # EXAMPLE HTML ROUTE
-  get "/posts" => "posts#index"
-  get "/posts" => "posts#new"
-  get "/posts/:id" => "posts#show"
-  post "/posts" => "posts#create"
-  get "/posts:id/edit" => "posts#edit"
-  patch "/posts/:id" => "posts#update"
-  delete "/posts/:id" => "posts#destroy"
   
   root 'home#index'
 
@@ -29,5 +22,13 @@ Rails.application.routes.draw do
     delete "/users/:id" => "users#destroy"
 
     get "/posts" => "posts#index"
+
+    get "/posts" => "posts#index"
+    get "/posts" => "posts#new"
+    get "/posts/:id" => "posts#show"
+    post "/posts" => "posts#create"
+    get "/posts:id/edit" => "posts#edit"
+    patch "/posts/:id" => "posts#update"
+    delete "/posts/:id" => "posts#destroy"
   end
 end

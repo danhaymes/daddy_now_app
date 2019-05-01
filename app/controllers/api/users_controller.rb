@@ -10,6 +10,7 @@ class Api::UsersController < ApplicationController
       last_name: params[:last_name],
       email: params[:email],
       user_name: params[:user_name],
+      password: params[:password],
       zipcode: params[:zipcode],
       profile_pic: params[:profile_pic],
       due_date: params[:due_date]

@@ -1,37 +1,55 @@
 class GoogleCalendarController < ApplicationController
   def redirect
     client = Signet::OAuth2::Client.new(client_options)
-
-    redirect_to client.authorization_uri.to_s
+   
+    b = Selenium::WebDriver.for :chrome
+    response = b.get(client.authorization_uri.to_s)
+  
+    while !$calendar_list
+      sleep 1
+    end
+  
+    render json: {events: $calendar_list}
   end
 
     def callback
+     
     client = Signet::OAuth2::Client.new(client_options)
+    
     client.code = params[:code]
-    p client.code
+    
     response = client.fetch_access_token!
-
+    
     session[:authorization] = response
-
+    
     redirect_to calendars_url
+    
   end
 
   def calendars
+       
     client = Signet::OAuth2::Client.new(client_options)
-    p client_options
-    p client
+        
+    
     client.update!(session[:authorization])
-    p client 
+        
+    
     service = Google::Apis::CalendarV3::CalendarService.new
+    
     service.authorization = client
-
-    @calendar_list = service.list_calendar_lists
+    
+    $calendar_list = service.list_calendar_lists
+    
+    render 'calendars.json.jbuilder'
+    
     rescue Google::Apis::AuthorizationError
+    
       response = client.refresh!
-
+    
       session[:authorization] = session[:authorization].merge(response)
-
+    
     retry
+    
   end
 
    def events
