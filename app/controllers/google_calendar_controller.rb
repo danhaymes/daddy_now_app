@@ -12,7 +12,7 @@ class GoogleCalendarController < ApplicationController
     render json: {events: $calendar_list}
   end
 
-    def callback
+  def callback
      
     client = Signet::OAuth2::Client.new(client_options)
     
@@ -29,17 +29,15 @@ class GoogleCalendarController < ApplicationController
   def calendars
        
     client = Signet::OAuth2::Client.new(client_options)
-        
-    
     client.update!(session[:authorization])
-        
-    
     service = Google::Apis::CalendarV3::CalendarService.new
     
     service.authorization = client
     
     $calendar_list = service.list_calendar_lists
-    
+    @event_list = service.list_events(params[:calendar_id])
+    p "@event_list"
+    p @event_list
     render 'calendars.json.jbuilder'
     
     rescue Google::Apis::AuthorizationError
@@ -59,7 +57,9 @@ class GoogleCalendarController < ApplicationController
     service = Google::Apis::CalendarV3::CalendarService.new
     service.authorization = client
 
-    @event_list = service.list_events(params[:calendar_id])
+    
+    p @event_list
+    render 'calendars.json.jbuilder'
   end
 
   def new_event

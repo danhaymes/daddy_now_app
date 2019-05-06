@@ -30,5 +30,14 @@ Rails.application.routes.draw do
     get "/posts:id/edit" => "posts#edit"
     patch "/posts/:id" => "posts#update"
     delete "/posts/:id" => "posts#destroy"
+
+
+    get "/comments" => "comments#index"
+    get "/comments" => "comments#new"
+    get "/comments/:id" => "comments#show"
+    post "/comments" => "comments#create"
+
+    post "/sessions" => "sessions#create"
+
   end
 end

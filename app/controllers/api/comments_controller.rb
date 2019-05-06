@@ -1,21 +1,29 @@
 class Api::CommentsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user
   before_action :set_comment, only: [:edit, :update, :show, :destroy]
   before_action :set_post, only: [:create, :edit, :show, :update, :destroy]
 
   def create
-    @comment = @post.comments.create(params[:comment].permit(:comment, :post_id))
-    @comment.user_id = current_user.id
 
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to post_path(@post) }
-        format.js # renders create.js.erb
-      else
-        format.html { redirect_to post_path(@post), notice: "comment did not save. Please try again."}
-        format.js
-      end
-    end
+    @comment = Comment.new(
+      comment: params[:comment],
+      user_id: current_user.id,
+      post_id: params[:post_id]
+      )
+    @comment.save
+    render 'index.json.jbuilder'
+    # @comment = @post.comments.create(params[:comment].permit(:comment, :post_id))
+    # @comment.user_id = current_user.id
+
+    # respond_to do |format|
+    #   if @comment.save
+    #     format.html { redirect_to post_path(@post) }
+    #     format.js 
+    #   else
+    #     format.html { redirect_to post_path(@post), notice: "comment did not save. Please try again."}
+    #     format.js
+    #   end
+    # end
   end
 
   def new

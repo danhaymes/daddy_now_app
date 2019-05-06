@@ -15,7 +15,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
-
+gem 'jwt', '~> 2.1'
 #signet for OAuth 2.0 for google-api-client gem
 gem 'signet', '~> 0.11.0'
 gem 'activemodel', '~> 5.2', '>= 5.2.3'
@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
+
 gem 'bcrypt', '~> 3.1.7'
 #google-api-client gem for calendar sync
 gem 'google-api-client', require: 'google/apis/calendar_v3'
@@ -39,7 +40,7 @@ gem 'friendly_id', '~> 5.2', '>= 5.2.5'
 gem 'redcarpet', '~> 3.4'
 gem 'coderay', '~> 1.1', '>= 1.1.2'
 gem 'redis', '~> 4.1'
-gem 'jwt_sessions', '~> 2.3', '>= 2.3.1'
+gem 'jwt_sessions', '~> 2.4'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'selenium-webdriver'
@@ -60,6 +61,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
 gem 'http'
 gem 'rack-cors'
