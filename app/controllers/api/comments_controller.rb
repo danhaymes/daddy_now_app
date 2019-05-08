@@ -11,7 +11,8 @@ class Api::CommentsController < ApplicationController
       post_id: params[:post_id]
       )
     @comment.save
-    render 'index.json.jbuilder'
+    render json: {}
+    # render 'index.json.jbuilder'
     # @comment = @post.comments.create(params[:comment].permit(:comment, :post_id))
     # @comment.user_id = current_user.id
 

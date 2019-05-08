@@ -39,5 +39,7 @@ Rails.application.routes.draw do
 
     post "/sessions" => "sessions#create"
 
+    get "/baby_names" => "baby_names#index"
+
   end
 end
